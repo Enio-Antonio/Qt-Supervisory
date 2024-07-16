@@ -7,10 +7,13 @@
 Plotter::Plotter(QWidget *parent)
     : QWidget{parent}
 {
+    /*
     x0 = 4;
     y0 = 326;
     x1 = (14);
     //y1 = (rand() % 331);
+*/
+    dados.push_back("0");
 }
 
 Plotter::~Plotter()
@@ -41,8 +44,10 @@ void Plotter::paintEvent(QPaintEvent *event)
     pen.setWidth(2);
     painter.setPen(pen);
 
+
     x0 = 4;
-    y0 = 326;
+    int y0_inteiro = dados[0].toInt();
+    y0 = y0_inteiro;
     x1 = 14;
 
     /*
@@ -57,17 +62,18 @@ void Plotter::paintEvent(QPaintEvent *event)
     }
     */
 
+    if (dados.size() > 1)
+        {
+        for (size_t i = 0; i < dados.size(); i++)
+        {
+            y1 = dados[i].toInt();
 
+            painter.drawLine(x0, y0, x1, y1);
 
-    for (size_t i = 0; i < dados.size(); i++)
-    {
-        y1 = dados[i].toInt();
-
-        painter.drawLine(x0, y0, x1, y1);
-
-        y0 = y1;
-        x0 = x1;
-        x1 += 10;
+            y0 = y1;
+            x0 = x1;
+            x1 += 10;
+        }
     }
 }
 
@@ -86,7 +92,10 @@ void Plotter::receberDados(qint64 thetime, QString str)
 
     if (x1 > width())
     {
-        dados.clear();
+        dados.erase(dados.begin());
+        //dados.clear();
+        x0 -= 10;
+        y0 -= 10;
     }
     repaint();
 }

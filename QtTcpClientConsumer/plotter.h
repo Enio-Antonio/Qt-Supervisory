@@ -12,6 +12,7 @@ private:
     std::vector<int> coordenadas_y;
     std::vector<qint64> tempos;
     std::vector<QString> dados;
+    std::vector<QString> dados_aux;
 
     QString valor;
     qint64 tempo;

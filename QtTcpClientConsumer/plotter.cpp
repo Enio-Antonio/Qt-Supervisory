@@ -44,23 +44,10 @@ void Plotter::paintEvent(QPaintEvent *event)
     pen.setWidth(2);
     painter.setPen(pen);
 
-
     x0 = 4;
     int y0_inteiro = dados[0].toInt();
     y0 = y0_inteiro;
     x1 = 14;
-
-    /*
-    for (int i = 0; i < width(); i++)
-    {
-        painter.drawLine(x0, y0, x1, y1);
-        x0 = x1;
-        y0 = y1;
-
-        y1 = (rand() % 331);
-        x1 += 10;
-    }
-    */
 
     if (dados.size() > 1)
         {
@@ -75,6 +62,26 @@ void Plotter::paintEvent(QPaintEvent *event)
             x1 += 10;
         }
     }
+
+/*
+    x0 = 4;
+    y0 = 326;
+    x1 = (14);
+
+    if (dados_aux.size() >= 10)
+    {
+        for (size_t i = 0; i < dados_aux.size(); i++)
+        {
+            y1 = dados_aux[i].toInt();
+
+            painter.drawLine(x0, y0, x1, y1);
+
+            y0 = y1;
+            x0 = x1;
+            x1 += 10;
+        }
+    }
+*/
 }
 
 void Plotter::receberDados(qint64 thetime, QString str)
@@ -84,6 +91,13 @@ void Plotter::receberDados(qint64 thetime, QString str)
 
     tempos.push_back(thetime);
     dados.push_back(valor);
+/*
+    if (dados.size() % 10 == 0)
+    {
+        dados_aux = dados;
+        dados.clear();
+    }
+*/
 
     qDebug() << "Esse e o tempo 'thetime': " << tempo;
     qDebug() << "Esse e o valor: 'str'" << valor;
@@ -97,5 +111,6 @@ void Plotter::receberDados(qint64 thetime, QString str)
         x0 -= 10;
         y0 -= 10;
     }
+
     repaint();
 }

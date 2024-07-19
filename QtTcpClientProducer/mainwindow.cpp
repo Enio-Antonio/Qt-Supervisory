@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   max = 35;
   min = 0;
-  intervaloTimer = 1;
+  intervaloTimer = 1000;
 
   //connect(ui->pushButtonPut, SIGNAL(clicked(bool)), this, SLOT(putData()));
 
@@ -76,6 +76,7 @@ void MainWindow::mudaMin()
 void MainWindow::mudaTimer()
 {
     intervaloTimer = ui->horizontalSlider_timer->value();
+    qDebug() << intervaloTimer;
 }
 
 
@@ -101,7 +102,7 @@ void MainWindow::on_botao_connect_clicked()
 void MainWindow::on_pushButton_start_clicked()
 {
     // Iniciar o timer (intervalo em milissegundos)
-    timerId = startTimer(intervaloTimer * 1000); // Timer de 1 segundo
+    timerId = startTimer(intervaloTimer); // Timer de 1 segundo
 }
 
 

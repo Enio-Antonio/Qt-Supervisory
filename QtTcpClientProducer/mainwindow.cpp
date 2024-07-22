@@ -72,7 +72,7 @@ void MainWindow::mudaMin()
 
 void MainWindow::mudaTimer()
 {
-    intervaloTimer = ui->horizontalSlider_timer->value();
+    intervaloTimer = ui->horizontalSlider_timer->value() * 1000;
 }
 
 

@@ -98,7 +98,7 @@
          <item>
           <widget class="QLabel" name="label_timing">
            <property name="text">
-            <string>Timing (ms)</string>
+            <string>Timing (s)</string>
            </property>
           </widget>
          </item>
@@ -108,10 +108,13 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>1000</number>
+            <number>99</number>
+           </property>
+           <property name="value">
+            <number>1</number>
            </property>
            <property name="sliderPosition">
-            <number>1000</number>
+            <number>1</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -123,7 +126,7 @@
        <item>
         <widget class="QLCDNumber" name="lcdNumber_timing">
          <property name="intValue" stdset="0">
-          <number>1000</number>
+          <number>1</number>
          </property>
         </widget>
        </item>

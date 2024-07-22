@@ -195,16 +195,17 @@ public:
         horizontalSlider_timer = new QSlider(layoutWidget);
         horizontalSlider_timer->setObjectName("horizontalSlider_timer");
         horizontalSlider_timer->setMinimum(1);
-        horizontalSlider_timer->setMaximum(1000);
-        horizontalSlider_timer->setSliderPosition(1000);
+        horizontalSlider_timer->setMaximum(99);
+        horizontalSlider_timer->setValue(1);
+        horizontalSlider_timer->setSliderPosition(1);
         horizontalSlider_timer->setOrientation(Qt::Horizontal);
 
         horizontalLayout_6->addWidget(horizontalSlider_timer);
 
         lcdNumber = new QLCDNumber(layoutWidget);
         lcdNumber->setObjectName("lcdNumber");
-        lcdNumber->setProperty("value", QVariant(1000.000000000000000));
-        lcdNumber->setProperty("intValue", QVariant(1000));
+        lcdNumber->setProperty("value", QVariant(1.000000000000000));
+        lcdNumber->setProperty("intValue", QVariant(1));
 
         horizontalLayout_6->addWidget(lcdNumber);
 
@@ -271,7 +272,7 @@ public:
         botao_disconect->setText(QCoreApplication::translate("MainWindow", "Disconnect", nullptr));
         label_min->setText(QCoreApplication::translate("MainWindow", "Min", nullptr));
         max->setText(QCoreApplication::translate("MainWindow", "Max", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Timing (ms) ", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Timing (s)", nullptr));
         pushButton_start->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
         pushButton_stop->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
         label_status->setText(QCoreApplication::translate("MainWindow", "disconnected", nullptr));

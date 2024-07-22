@@ -149,8 +149,9 @@ public:
         horizontalSlider_timing = new QSlider(layoutWidget);
         horizontalSlider_timing->setObjectName("horizontalSlider_timing");
         horizontalSlider_timing->setMinimum(1);
-        horizontalSlider_timing->setMaximum(1000);
-        horizontalSlider_timing->setSliderPosition(1000);
+        horizontalSlider_timing->setMaximum(99);
+        horizontalSlider_timing->setValue(1);
+        horizontalSlider_timing->setSliderPosition(1);
         horizontalSlider_timing->setOrientation(Qt::Horizontal);
 
         verticalLayout->addWidget(horizontalSlider_timing);
@@ -160,7 +161,7 @@ public:
 
         lcdNumber_timing = new QLCDNumber(layoutWidget);
         lcdNumber_timing->setObjectName("lcdNumber_timing");
-        lcdNumber_timing->setProperty("intValue", QVariant(1000));
+        lcdNumber_timing->setProperty("intValue", QVariant(1));
 
         horizontalLayout->addWidget(lcdNumber_timing);
 
@@ -223,7 +224,7 @@ public:
         pushButton_connect->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         pushButton_disconnect->setText(QCoreApplication::translate("MainWindow", "Disconnect", nullptr));
         pushButton_update->setText(QCoreApplication::translate("MainWindow", "Update", nullptr));
-        label_timing->setText(QCoreApplication::translate("MainWindow", "Timing (ms)", nullptr));
+        label_timing->setText(QCoreApplication::translate("MainWindow", "Timing (s)", nullptr));
         pushButton_start->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
         pushButton_stop->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
         label_lendo_dados->setText(QString());

@@ -72,8 +72,6 @@ void MainWindow::on_input_ip_editingFinished()
 void MainWindow::on_pushButton_connect_clicked()
 {
     tcpConnect();
-    // ui->lista_ip->addItem(ip_servidor);
-    qDebug() << "ip servidor: " << ip_servidor;
 }
 
 
@@ -90,8 +88,6 @@ void MainWindow::on_lista_ip_itemClicked(QListWidgetItem *item)
     ui->input_ip->setText(ui->lista_ip->currentItem()->text());
 
     ip_servidor = ui->lista_ip->currentItem()->text();
-
-    qDebug() << ui->lista_ip->currentItem()->text();
 }
 
 
@@ -109,7 +105,6 @@ void MainWindow::on_pushButton_update_clicked()
             while(socket->bytesAvailable())
             {
                 QString ip = socket->readLine().replace("\n","").replace("\r","");
-                qDebug() << "ip advindo do comando list: " << ip;
                 ui->lista_ip->addItem(ip);
             }
         }
@@ -152,6 +147,6 @@ void MainWindow::on_pushButton_stop_clicked()
 
 void MainWindow::mudaTimer()
 {
-    intervalo_timer = ui->horizontalSlider_timing->value();
+    intervalo_timer = ui->horizontalSlider_timing->value() * 1000;
 }
 

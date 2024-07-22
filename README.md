@@ -1,5 +1,5 @@
-Projeto da Terceira Unidade.
+## Projeto da Terceira Unidade.
 
-Componentes:
+### Componentes:
 - Ênio Antônio Cunha Lizieri do Nascimento
 - Joel Rodrigues de Lima

@@ -40,7 +40,7 @@ void Plotter::paintEvent(QPaintEvent *event)
     painter.setPen(pen);
 
     x0 = 4;
-    y0 = 326;
+    y0 = height() - 3;
 
     if (dados_aux.size() == 21)
     {

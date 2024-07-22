@@ -25,6 +25,7 @@ public:
   void timerEvent(QTimerEvent *event);
 public slots:
   void getData();
+  void mudaTimer();
 
 private slots:
     void on_input_ip_editingFinished();
@@ -51,7 +52,7 @@ private:
   QString ip_servidor;
 
   int get_data_timer;
-
+  int intervalo_timer;
 };
 
 #endif // MAINWINDOW_H

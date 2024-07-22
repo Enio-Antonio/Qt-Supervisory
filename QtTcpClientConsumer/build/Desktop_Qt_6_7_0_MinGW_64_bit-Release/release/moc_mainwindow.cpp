@@ -41,6 +41,7 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "thetime",
     "str",
     "getData",
+    "mudaTimer",
     "on_input_ip_editingFinished",
     "on_pushButton_connect_clicked",
     "on_pushButton_disconnect_clicked",
@@ -62,7 +63,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,17 +71,18 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   68,    2, 0x06,    1 /* Public */,
+       1,    2,   74,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,   73,    2, 0x0a,    4 /* Public */,
-       6,    0,   74,    2, 0x08,    5 /* Private */,
-       7,    0,   75,    2, 0x08,    6 /* Private */,
-       8,    0,   76,    2, 0x08,    7 /* Private */,
-       9,    1,   77,    2, 0x08,    8 /* Private */,
-      12,    0,   80,    2, 0x08,   10 /* Private */,
-      13,    0,   81,    2, 0x08,   11 /* Private */,
-      14,    0,   82,    2, 0x08,   12 /* Private */,
+       5,    0,   79,    2, 0x0a,    4 /* Public */,
+       6,    0,   80,    2, 0x0a,    5 /* Public */,
+       7,    0,   81,    2, 0x08,    6 /* Private */,
+       8,    0,   82,    2, 0x08,    7 /* Private */,
+       9,    0,   83,    2, 0x08,    8 /* Private */,
+      10,    1,   84,    2, 0x08,    9 /* Private */,
+      13,    0,   87,    2, 0x08,   11 /* Private */,
+      14,    0,   88,    2, 0x08,   12 /* Private */,
+      15,    0,   89,    2, 0x08,   13 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::LongLong, QMetaType::QString,    3,    4,
@@ -90,7 +92,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 11,   12,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -112,6 +115,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<qint64, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'getData'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'mudaTimer'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_input_ip_editingFinished'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -140,13 +145,14 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->enviarDados((*reinterpret_cast< std::add_pointer_t<qint64>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 1: _t->getData(); break;
-        case 2: _t->on_input_ip_editingFinished(); break;
-        case 3: _t->on_pushButton_connect_clicked(); break;
-        case 4: _t->on_pushButton_disconnect_clicked(); break;
-        case 5: _t->on_lista_ip_itemClicked((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
-        case 6: _t->on_pushButton_update_clicked(); break;
-        case 7: _t->on_pushButton_start_clicked(); break;
-        case 8: _t->on_pushButton_stop_clicked(); break;
+        case 2: _t->mudaTimer(); break;
+        case 3: _t->on_input_ip_editingFinished(); break;
+        case 4: _t->on_pushButton_connect_clicked(); break;
+        case 5: _t->on_pushButton_disconnect_clicked(); break;
+        case 6: _t->on_lista_ip_itemClicked((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
+        case 7: _t->on_pushButton_update_clicked(); break;
+        case 8: _t->on_pushButton_start_clicked(); break;
+        case 9: _t->on_pushButton_stop_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -180,13 +186,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

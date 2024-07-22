@@ -7,13 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent), ui(new Ui::MainWindow){
   ui->setupUi(this);
   socket = new QTcpSocket(this);
-  //tcpConnect();
 
   max = 35;
   min = 0;
   intervaloTimer = 1000;
-
-  //connect(ui->pushButtonPut, SIGNAL(clicked(bool)), this, SLOT(putData()));
 
   connect(ui->horizontalSlider_max, SIGNAL(valueChanged(int)), this, SLOT(mudaMax()));
   connect(ui->horizontalSlider_min, SIGNAL(valueChanged(int)), this, SLOT(mudaMin()));
@@ -21,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 void MainWindow::tcpConnect(){
-  socket->connectToHost(ip_servidor,1234); // "127.0.0.1"
+  socket->connectToHost(ip_servidor,1234);
   if(socket->waitForConnected(3000)){
     qDebug() << "Connected";
       ui->label_status->setText("connected");
@@ -76,7 +73,6 @@ void MainWindow::mudaMin()
 void MainWindow::mudaTimer()
 {
     intervaloTimer = ui->horizontalSlider_timer->value();
-    qDebug() << intervaloTimer;
 }
 
 

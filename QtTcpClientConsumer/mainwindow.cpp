@@ -8,18 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   ui->setupUi(this);
   socket = new QTcpSocket(this);
-  //tcpConnect();
-
-  connect(ui->pushButtonGet,
-          SIGNAL(clicked(bool)),
-          this,
-          SLOT(getData()));
-
-  // Preencher o vetor e enviar informações para o gráfico
-  connect(ui->pushButton_debug, SIGNAL(clicked(bool)), ui->widget, SLOT(preencherVetor()));
 
   // Enviar thetime e str para a classe Plotter
   connect(this, SIGNAL(enviarDados(qint64, QString)), ui->widget, SLOT(receberDados(qint64, QString)));
+
+  intervalo_timer = 1000;
+  connect(ui->horizontalSlider_timing, SIGNAL(valueChanged(int)), this, SLOT(mudaTimer()));
 }
 
 void MainWindow::tcpConnect(){
@@ -140,17 +134,24 @@ void MainWindow::on_pushButton_update_clicked()
 
 void MainWindow::on_pushButton_start_clicked()
 {
-    get_data_timer = startTimer(1000);
+    get_data_timer = startTimer(intervalo_timer);
 }
 
 void MainWindow::timerEvent(QTimerEvent *event)
 {
     Q_UNUSED(event);
     getData();
+    ui->label_lendo_dados->setText("Aguarde a leitura de 20 valores...");
 }
 
 void MainWindow::on_pushButton_stop_clicked()
 {
     killTimer(get_data_timer);
+    ui->label_lendo_dados->setText("");
+}
+
+void MainWindow::mudaTimer()
+{
+    intervalo_timer = ui->horizontalSlider_timing->value();
 }
 

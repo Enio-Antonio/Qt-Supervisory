@@ -7,13 +7,8 @@
 Plotter::Plotter(QWidget *parent)
     : QWidget{parent}
 {
-    /*
-    x0 = 4;
-    y0 = 326;
-    x1 = (14);
-    //y1 = (rand() % 331);
-*/
     dados.push_back("0");
+    tempos.push_back(0);
 }
 
 Plotter::~Plotter()
@@ -45,43 +40,25 @@ void Plotter::paintEvent(QPaintEvent *event)
     painter.setPen(pen);
 
     x0 = 4;
-    int y0_inteiro = dados[0].toInt();
-    y0 = y0_inteiro;
-    x1 = 14;
-
-    if (dados.size() > 1)
-        {
-        for (size_t i = 0; i < dados.size(); i++)
-        {
-            y1 = dados[i].toInt();
-
-            painter.drawLine(x0, y0, x1, y1);
-
-            y0 = y1;
-            x0 = x1;
-            x1 += 10;
-        }
-    }
-
-/*
-    x0 = 4;
     y0 = 326;
-    x1 = (14);
 
-    if (dados_aux.size() >= 10)
+    if (dados_aux.size() == 21)
     {
         for (size_t i = 0; i < dados_aux.size(); i++)
         {
-            y1 = dados_aux[i].toInt();
+            if (i != 0)
+            {
+                y1 = height() - ((dados_aux[i].toInt() * height()) / 99);
 
-            painter.drawLine(x0, y0, x1, y1);
+                x1 = (tempos_aux[i] - referencia_aux + 1000) / 40;
 
-            y0 = y1;
-            x0 = x1;
-            x1 += 10;
+                painter.drawLine(x0, y0, x1, y1);
+
+                y0 = y1;
+                x0 = x1;
+            }
         }
     }
-*/
 }
 
 void Plotter::receberDados(qint64 thetime, QString str)
@@ -89,21 +66,21 @@ void Plotter::receberDados(qint64 thetime, QString str)
     tempo = thetime;
     valor = str;
 
-    tempos.push_back(thetime);
+    tempos.push_back(tempo);
+    if (tempos.size() == 2)
+        referencia = tempo;
     dados.push_back(valor);
-/*
-    if (dados.size() % 10 == 0)
+
+    if (dados.size() == 21)
     {
+        referencia_aux = referencia;
         dados_aux = dados;
         dados.clear();
+        tempos_aux = tempos;
+        tempos.clear();
     }
-*/
 
-    qDebug() << "Esse e o tempo 'thetime': " << tempo;
-    qDebug() << "Esse e o valor: 'str'" << valor;
-
-    //int num = (rand() % 331);
-
+    /*
     if (x1 > width())
     {
         dados.erase(dados.begin());
@@ -111,6 +88,7 @@ void Plotter::receberDados(qint64 thetime, QString str)
         x0 -= 10;
         y0 -= 10;
     }
+*/
 
     repaint();
 }

@@ -33,7 +33,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *pushButtonGet;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_2;
@@ -57,7 +56,7 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QPushButton *pushButton_stop;
     Plotter *widget;
-    QPushButton *pushButton_debug;
+    QLabel *label_lendo_dados;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -69,9 +68,6 @@ public:
         MainWindow->resize(690, 525);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
-        pushButtonGet = new QPushButton(centralWidget);
-        pushButtonGet->setObjectName("pushButtonGet");
-        pushButtonGet->setGeometry(QRect(300, 30, 101, 29));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName("layoutWidget");
         layoutWidget->setGeometry(QRect(10, 10, 260, 430));
@@ -153,6 +149,8 @@ public:
         horizontalSlider_timing = new QSlider(layoutWidget);
         horizontalSlider_timing->setObjectName("horizontalSlider_timing");
         horizontalSlider_timing->setMinimum(1);
+        horizontalSlider_timing->setMaximum(1000);
+        horizontalSlider_timing->setSliderPosition(1000);
         horizontalSlider_timing->setOrientation(Qt::Horizontal);
 
         verticalLayout->addWidget(horizontalSlider_timing);
@@ -162,7 +160,7 @@ public:
 
         lcdNumber_timing = new QLCDNumber(layoutWidget);
         lcdNumber_timing->setObjectName("lcdNumber_timing");
-        lcdNumber_timing->setProperty("intValue", QVariant(1));
+        lcdNumber_timing->setProperty("intValue", QVariant(1000));
 
         horizontalLayout->addWidget(lcdNumber_timing);
 
@@ -191,15 +189,15 @@ public:
 
         widget = new Plotter(centralWidget);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(280, 80, 401, 331));
+        widget->setGeometry(QRect(280, 80, 401, 361));
         QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
         widget->setSizePolicy(sizePolicy);
-        pushButton_debug = new QPushButton(centralWidget);
-        pushButton_debug->setObjectName("pushButton_debug");
-        pushButton_debug->setGeometry(QRect(470, 30, 83, 29));
+        label_lendo_dados = new QLabel(centralWidget);
+        label_lendo_dados->setObjectName("label_lendo_dados");
+        label_lendo_dados->setGeometry(QRect(280, 50, 391, 20));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName("menuBar");
@@ -221,15 +219,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButtonGet->setText(QCoreApplication::translate("MainWindow", "getData", nullptr));
         label_ip_servidor->setText(QCoreApplication::translate("MainWindow", "IP do Servidor", nullptr));
         pushButton_connect->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         pushButton_disconnect->setText(QCoreApplication::translate("MainWindow", "Disconnect", nullptr));
         pushButton_update->setText(QCoreApplication::translate("MainWindow", "Update", nullptr));
-        label_timing->setText(QCoreApplication::translate("MainWindow", "Timing", nullptr));
+        label_timing->setText(QCoreApplication::translate("MainWindow", "Timing (ms)", nullptr));
         pushButton_start->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
         pushButton_stop->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
-        pushButton_debug->setText(QCoreApplication::translate("MainWindow", "debug", nullptr));
+        label_lendo_dados->setText(QString());
     } // retranslateUi
 
 };
